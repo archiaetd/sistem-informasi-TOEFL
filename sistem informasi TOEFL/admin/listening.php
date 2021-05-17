@@ -8,7 +8,7 @@ include("sys/koneksi.php");
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Reading</title>
+    <title>Listening</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -45,10 +45,10 @@ include("sys/koneksi.php");
                             <a href="index.php" class="text-light text-decoration-none"><i class="fa fa-home" aria-hidden="true"></i> HOME</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="reading.php" class=" text-light text-decoration-none active"><i class="fa fa-book" aria-hidden="true"></i> Reading</a>
+                            <a href="reading.php" class=" text-light text-decoration-none"><i class="fa fa-book" aria-hidden="true"></i> Reading</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="listening.php" class=" text-light text-decoration-none"><i class="fa fa-headphones" aria-hidden="true"></i> Listening</a>
+                            <a href="listening.php" class=" text-light text-decoration-none active"><i class="fa fa-headphones" aria-hidden="true"></i> Listening</a>
                         </li>
                         <li class="list-group-item bg-aside">
                             <a href="pengunjung.php" class=" text-light text-decoration-none"><i class="fa fa-users" aria-hidden="true"></i> Pengunjung</a>
@@ -66,7 +66,7 @@ include("sys/koneksi.php");
                     <span class="ml-auto h4">User <i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div class="h3 pt-2 pl-3" style="height: 10%;">
-                    Reading
+                    Listening
                 </div>
                 <div class="d-flex flex-column pt-2 pl-3" style="max-height: 73;">
                     <div class="align-self-center text-center p-4 m-auto">
@@ -83,7 +83,7 @@ include("sys/koneksi.php");
                                 </tr>
                                 <?php
 
-                                $select = mysqli_query($conn, "select * from soal where tipe_soal='reading'");
+                                $select = mysqli_query($conn, "select * from soal where tipe_soal='listening'");
                                 while($data = mysqli_fetch_array($select)){
                                     ?>
                                     <tr>

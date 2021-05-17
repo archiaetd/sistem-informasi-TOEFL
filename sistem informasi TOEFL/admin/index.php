@@ -45,10 +45,10 @@
                             <a href="reading.php" class=" text-light text-decoration-none "><i class="fa fa-book" aria-hidden="true"></i> Reading</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="" class=" text-light text-decoration-none"><i class="fa fa-headphones" aria-hidden="true"></i> Listening</a>
+                            <a href="listening.php" class=" text-light text-decoration-none"><i class="fa fa-headphones" aria-hidden="true"></i> Listening</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="" class=" text-light text-decoration-none"><i class="fa fa-users" aria-hidden="true"></i> Pengunjung</a>
+                            <a href="pengunjung.php" class=" text-light text-decoration-none"><i class="fa fa-users" aria-hidden="true"></i> Pengunjung</a>
                         </li>
                         <li class="list-group-item bg-aside">
                             <a href="" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>

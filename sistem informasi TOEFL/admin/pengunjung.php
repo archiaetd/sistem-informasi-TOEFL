@@ -8,7 +8,7 @@ include("sys/koneksi.php");
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Reading</title>
+    <title>Pengunjung</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -66,7 +66,7 @@ include("sys/koneksi.php");
                     <span class="ml-auto h4">User <i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div class="h3 pt-2 pl-3" style="height: 10%;">
-                    Reading
+                    Pengunjung
                 </div>
                 <div class="d-flex flex-column pt-2 pl-3" style="max-height: 73;">
                     <div class="align-self-center text-center p-4 m-auto">
@@ -77,18 +77,33 @@ include("sys/koneksi.php");
                             <a name="" id="" class="btn btn-primary my-2 align-content-start" href="#" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
                             <table border="1" class="tabel">
                                 <tr>
-                                    <th>ID Soal</th>
-                                    <th>Pertanyaan</th>
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Score</th>
                                     <th>Aksi</th>
                                 </tr>
                                 <?php
 
-                                $select = mysqli_query($conn, "select * from soal where tipe_soal='reading'");
+                                $query = "
+                                    SELECT 
+                                    user.id_user, 
+                                    user.nama_user, 
+                                    user.email, 
+                                    tes.score
+                                    FROM user
+                                    INNER JOIN tes
+                                    ON user.id_user=tes.id_user
+                                    WHERE user.tipe_user = 'pengunjung'
+                                ";
+                                $select = mysqli_query($conn, $query);
                                 while($data = mysqli_fetch_array($select)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $data["id_soal"] ?></td>
-                                        <td class="px-2" style="max-width: 40em; text-align: left;"><?php echo $data["pertanyaan"] ?></td>
+                                        <td><?php echo $data["id_user"] ?></td>
+                                        <td><?php echo $data["nama_user"] ?></td>
+                                        <td><?php echo $data["email"] ?></td>
+                                        <td><?php echo $data["score"] ?></td>
                                         <td>
                                             <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                                             <a name="" id="" class="btn btn-danger" href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
