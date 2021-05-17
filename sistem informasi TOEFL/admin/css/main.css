@@ -1,0 +1,24 @@
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+.bg-aside {
+    background-color: #6e6f71;
+}
+
+.bg-header {
+    background-color: #f1f9ff;
+}
+
+.list-group-item {
+    border-top: none;
+}
+
+a .active {
+    color: #cbd3da !important;
+}
+
+.tabel {
+    min-width: 70%;
+}
