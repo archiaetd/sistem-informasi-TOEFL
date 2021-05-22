@@ -1,6 +1,10 @@
 <?php
 
+session_start();
 
+// if(!isset($_SESSION["nama_user"])){
+//     header("location:login.php");
+// }
 
 ?>
 <!doctype html>
@@ -60,7 +64,7 @@
             <div class="col-md-10 mx-0 px-0 d-flex flex-column">
                 <div class="bg-header d-flex align-items-center py-2 pl-3 pr-5">
                     <i class="fa fa-bars h4" aria-hidden="true"></i>
-                    <span class="ml-auto h4">User <i class="fa fa-user" aria-hidden="true"></i></span>
+                    <span class="ml-auto h4">Admin <i class="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div class="d-flex flex-column pt-2 pl-3">
                     <span class="h3 align-self-start">Home</span>

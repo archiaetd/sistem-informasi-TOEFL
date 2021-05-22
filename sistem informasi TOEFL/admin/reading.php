@@ -74,7 +74,7 @@ include("sys/koneksi.php");
                             Daftar Soal
                         </div>
                         <div class=" my-1 bg-light p-2 d-flex align-items-start flex-column">
-                            <a name="" id="" class="btn btn-primary my-2 align-content-start" href="#" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
+                            <a class="btn btn-primary my-2 align-content-start" href="#form-tambah" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
                             <table border="1" class="tabel">
                                 <tr>
                                     <th>ID Soal</th>
@@ -108,5 +108,69 @@ include("sys/koneksi.php");
             </div>
         </div>
     </div>
+
+    
+    
+    <!-- Modal Tambah -->
+    <div class="modal fade" id="form-tambah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <form action="process/tambah_barang.php" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label for="pertanyaan">Pertanyaan</label>
+                          <textarea class="form-control" name="pertanyaan" id="pertanyaan" rows="3"></textarea required>
+                        </div>
+                        <div class="form-group">
+                          <label for="gambar">Gambar</label>
+                          <input type="file" class="form-control" name="gambar" id="gambar" required>
+                          <small id="helpId" class="form-text text-muted">Masukkan gambar</small>
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_a">Jawaban A</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_a" id="jawaban_a" placeholder="Jawaban A">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_b">Jawaban B</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_b" id="jawaban_b" placeholder="Jawaban B">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_c">Jawaban C</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_c" id="jawaban_c" placeholder="Jawaban C">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_d">Jawaban D</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_d" id="jawaban_d" placeholder="Jawaban D">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_e">Jawaban E</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_e" id="jawaban_e" placeholder="Jawaban E">
+                        </div>
+                        <div class="form-group">
+                          <label for="kunci">Kunci</label>
+                          <input type="text" class="form-control" name="kunci" id="kunci" aria-describedby="helpId" placeholder="Kunci">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Tambah" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
