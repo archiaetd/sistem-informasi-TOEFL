@@ -1,3 +1,18 @@
+<?php
+include("admin/sys/koneksi.php");
+                $r = [];
+                $cek = mysqli_query($conn, "SELECT id_soal FROM `soal` WHERE `tipe_soal`='reading'");
+                while($data = mysqli_fetch_array($cek)){
+                    $r[]=$data[0];
+
+                }
+                $banyak_soal = count($r);
+                $nomor = 0;
+                $no_prev = $nomor-1;
+                $no_next = $nomor+1;
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,6 +45,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <form class="form-inline ml-auto">
             <a href="../welkam.html" class="btn btn-sm btn-outline-success btn-secondary text-white disable">&#60; Back</a>
+            <button onclick=""></button>
             <a href="soal listening/listening.html" class="btn btn-sm btn-outline-success btn-primary text-white">Next &#62;</a>
           </form>
         </div>
@@ -41,7 +57,7 @@
     <div class="jumbotron jumbotron-fluid" style="background-color: white">
       <div class="container">
         <h1 class="display-4">Reading Section</h1>
-        <h3 class="question">Question 1/5</h3>
+        <h3 class="question">Question <?php echo $nomor+1 ?>/<?php echo ($banyak_soal); ?></h3>
       </div>
       <div class="container" style="font-size: 20px">
         <p align="right">Time left = <span id="timer" style="color: #2699fb"></span></p>
@@ -59,10 +75,11 @@
 
                 <?php
                 
-                include("admin/sys/koneksi.php");
+            
 
-                $select = mysqli_query($conn, "Select * from soal where id_soal = 4");
 
+                $select = mysqli_query($conn, "Select * from soal where id_soal = $r[$nomor]");
+              
                 while($data = mysqli_fetch_array($select)){
                     $soal = $data["pertanyaan"];
                     $gambar = $data["gambar"];
@@ -71,9 +88,10 @@
                 
                 ?>
 
+
               <p>1. <?php echo $soal; ?></p>
               <div class="radio-inline">
-                <label><input type="radio" name="posradio" /> <?php echo explode(";",$jawaban)[0]; ?></label>
+                <label><input type="radio" name="posradio " /> <?php echo explode(";",$jawaban)[0]; ?></label>
               </div>
               <div class="radio-inline">
                 <label><input type="radio" name="posradio" /> <?php echo explode(";",$jawaban)[1]; ?></label>
