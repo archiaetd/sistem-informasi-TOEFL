@@ -1,3 +1,14 @@
+<?php
+include("admin/sys/koneksi.php");
+$idtes = mysqli_query($conn, "select max(id_tes) FROM tes");
+$idnya = mysqli_fetch_array($idtes);
+
+ $cek = mysqli_query($conn, "SELECT nama FROM `tes` WHERE `id_tes` = $idnya[0]" );
+ $nama = mysqli_fetch_array($cek);
+ 
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,8 +31,10 @@
 
   <body background="bekgron.png"></body>
   <div class="constructor" style="padding-left: 3rem; padding-top: 4rem;">
-    <h1 class="display-8">Welcome, <br />You Can Start Your <br />TOEFL Practice Now!</h1>
+
+    <h1 class="display-8">Welcome, <?php echo ($nama[0]); ?><br />You Can Start Your <br />TOEFL Practice Now!</h1>
     <a href="../sistem informasi TOEFL/Tutorial/tutorial test directionn.html" class="btn btn-primary start-0">Start Test</a>
   </div>
 </div>
 </html>
+
