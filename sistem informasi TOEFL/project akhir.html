@@ -1,4 +1,4 @@
-<!doctype html>
+nama<!doctype html>
 <html lang="en">
   <head>
     <title>TOEFL</title>
@@ -52,29 +52,29 @@
               </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="admin/process/tambah_pengunjung.php"  method="post" enctype="multipart/form-data">
                     <div class="form-group mb-3x">
                       <label>
                         Fullname*
-                        <input type="text" name="fullname" style="width: 200%" class="form-control" />
+                        <input type="text" name="nama" id="nama" style="width: 200%" class="form-control" />
                       </label>
                     </div>
                     <div class="form-group mb-3">
                       <label>
                         Email Address*
-                        <input type="text" name="email" style="width: 200%" class="form-control" />
+                        <input type="text" name="email" id="email" style="width: 200%" class="form-control" />
                       </label>
                     </div>
                     <div class="form-group mb-3">
                       <label>
                         Mobile Phone Number*
-                        <input type="text" name="number" style="width: 200%" class="form-control" />
+                        <input type="text" name="number" id="number" style="width: 200%" class="form-control" />
                       </label>
                     </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Test" class="btn btn-primary">
+                    </div>
                   </form>
-            </div>
-            <div class="modal-footer">
-                <a href="welkam.html" class="btn btn-primary start-0">Start Test</a>
             </div>
           </div>
         </div>
