@@ -96,3 +96,12 @@ footer{
   background-color: #ffffff;
   margin: 100px auto;
 }
+
+.modal-content {
+  -webkit-border-radius: 20px !important;
+  -moz-border-radius: 20px !important;
+  border-radius: 20px !important;
+  -webkit-border: 20px !important;
+  -moz-border: 20px !important;
+  border: 20px !important;
+}
