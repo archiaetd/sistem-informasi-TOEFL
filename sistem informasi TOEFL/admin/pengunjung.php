@@ -1,7 +1,8 @@
 <?php
 
 include("sys/koneksi.php");
-
+session_start();
+include 'cek.php';
 
 
 ?>
@@ -27,6 +28,13 @@ include("sys/koneksi.php");
     
     <!-- optional CSS -->
     <link rel="stylesheet" href="css/main.css?version=51">
+
+    <script>
+        function hapus(id) {  
+            $("#id").attr("value", id);
+        }
+
+    </script>
 </head>
 <body>
         
@@ -54,7 +62,7 @@ include("sys/koneksi.php");
                             <a href="pengunjung.php" class=" text-light text-decoration-none"><i class="fa fa-users" aria-hidden="true"></i> Pengunjung</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
+                            <a href="logout.php" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
                         </li>
                     </ul>
                 </div>
@@ -71,42 +79,34 @@ include("sys/koneksi.php");
                 <div class="d-flex flex-column pt-2 pl-3" style="max-height: 73;">
                     <div class="align-self-center text-center p-4 m-auto">
                         <div class="h3 my-1 bg-light p-2">
-                            Daftar Soal
+                            Daftar Pengunjung
                         </div>
                         <div class=" my-1 bg-light p-2 d-flex align-items-start flex-column">
-                            <a name="" id="" class="btn btn-primary my-2 align-content-start" href="#" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
                             <table border="1" class="tabel">
                                 <tr>
                                     <th>ID</th>
+                                    <th>No Telpon</th>
                                     <th>Nama</th>
                                     <th>Email</th>
                                     <th>Score</th>
+                                    <th>Sisa Waktu</th>
                                     <th>Aksi</th>
                                 </tr>
                                 <?php
 
-                                $query = "
-                                    SELECT 
-                                    user.id_user, 
-                                    user.nama_user, 
-                                    user.email, 
-                                    tes.score
-                                    FROM user
-                                    INNER JOIN tes
-                                    ON user.id_user=tes.id_user
-                                    WHERE user.tipe_user = 'pengunjung'
-                                ";
-                                $select = mysqli_query($conn, $query);
+                            
+                                $select = mysqli_query($conn, "select * from tes");
                                 while($data = mysqli_fetch_array($select)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $data["id_user"] ?></td>
-                                        <td><?php echo $data["nama_user"] ?></td>
+                                        <td><?php echo $data["id_tes"] ?></td>
+                                        <td><?php echo $data["no_telpon"] ?></td>
+                                        <td><?php echo $data["nama"] ?></td>
                                         <td><?php echo $data["email"] ?></td>
                                         <td><?php echo $data["score"] ?></td>
+                                        <td><?php echo $data["sisa_waktu"]?></td>
                                         <td>
-                                            <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                                            <a name="" id="" class="btn btn-danger" href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
+                                            <a  style="margin: 10px;" class="btn btn-danger" href="#form-hapus" data-toggle="modal" onclick="hapus(<?php echo $data['id_tes'] ?>)"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
                                         </td>
                                     </tr>
                                     <?php
@@ -120,6 +120,31 @@ include("sys/koneksi.php");
                 <div class="text-center bg-aside text-white p-2 mt-auto" style="height: 7%;">
                     Copyright ©2021 Kelompok 1. All Rights Reserved.
                 </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="form-hapus" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data</h5>
+                        <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <form action="process/hapus_pengunjung.php" method="post" id="form-hapus">
+                    <div class="modal-body" id="body-edit">
+                        <div class="form-check form-check-inline mb-3 ml-2">
+                            <input type="hidden" name="id" id="id">
+                        </div>
+                        Apakah anda yakin ingin menghapus data ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                        <input type="submit" value="Ya" class="btn btn-primary">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

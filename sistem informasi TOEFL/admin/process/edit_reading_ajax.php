@@ -17,7 +17,6 @@ $jawaban_a = explode(";", $jawaban)[0];
 $jawaban_b = explode(";", $jawaban)[1];
 $jawaban_c = explode(";", $jawaban)[2];
 $jawaban_d = explode(";", $jawaban)[3];
-$jawaban_e = explode(";", $jawaban)[4];
 
 ?>
 <div class="form-group">
@@ -53,11 +52,6 @@ $jawaban_e = explode(";", $jawaban)[4];
     <label for="jawaban_d">Jawaban D</label>
     <input type="text"
     class="form-control" name="jawaban_d" id="jawaban_d" placeholder="Jawaban D" value="<?php echo $jawaban_d ?>">
-</div>
-<div class="form-group">
-    <label for="jawaban_e">Jawaban E</label>
-    <input type="text"
-    class="form-control" name="jawaban_e" id="jawaban_e" placeholder="Jawaban E" value="<?php echo $jawaban_e ?>">
 </div>
 <div class="form-group">
     <label for="kunci">Kunci</label>

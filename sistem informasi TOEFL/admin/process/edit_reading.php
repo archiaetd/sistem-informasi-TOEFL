@@ -19,7 +19,6 @@ if(file_exists($_FILES['gambar']['tmp_name']) || is_uploaded_file($_FILES['gamba
         $jawaban_b = $_POST["jawaban_b"];
         $jawaban_c = $_POST["jawaban_c"];
         $jawaban_d = $_POST["jawaban_d"];
-        $jawaban_e = $_POST["jawaban_e"];
         $kunci = $_POST["kunci"];
 
         $jawaban = $jawaban_a.";".$jawaban_b.";".$jawaban_c.";".$jawaban_d.";".$jawaban_e;
@@ -52,7 +51,6 @@ if(file_exists($_FILES['gambar']['tmp_name']) || is_uploaded_file($_FILES['gamba
     $jawaban_b = $_POST["jawaban_b"];
     $jawaban_c = $_POST["jawaban_c"];
     $jawaban_d = $_POST["jawaban_d"];
-    $jawaban_e = $_POST["jawaban_e"];
     $kunci = $_POST["kunci"];
 
     $jawaban = $jawaban_a.";".$jawaban_b.";".$jawaban_c.";".$jawaban_d.";".$jawaban_e;

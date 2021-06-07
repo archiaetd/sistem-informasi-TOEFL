@@ -1,7 +1,8 @@
 <?php
 
 include("sys/koneksi.php");
-
+session_start();
+include 'cek.php';
 
 
 ?>
@@ -21,12 +22,25 @@ include("sys/koneksi.php");
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="sys/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     
     <!-- optional CSS -->
     <link rel="stylesheet" href="css/main.css?version=51">
+
+    
+    <script>
+        function edit(id_temp) {
+            $("#body-edit").load("process/edit_reading_ajax.php", {id:id_temp}, function (response, status, request) {
+                this; // dom element
+            });
+        }
+
+        function hapus(id) {  
+            $("#id").attr("value", id);
+        }
+    </script>
 </head>
 <body>
         
@@ -45,16 +59,16 @@ include("sys/koneksi.php");
                             <a href="index.php" class="text-light text-decoration-none"><i class="fa fa-home" aria-hidden="true"></i> HOME</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="reading.php" class=" text-light text-decoration-none"><i class="fa fa-book" aria-hidden="true"></i> Reading</a>
+                            <a href="reading.php" class=" text-light text-decoration-none active"><i class="fa fa-book" aria-hidden="true"></i> Reading</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="listening.php" class=" text-light text-decoration-none active"><i class="fa fa-headphones" aria-hidden="true"></i> Listening</a>
+                            <a href="listening.php" class=" text-light text-decoration-none"><i class="fa fa-headphones" aria-hidden="true"></i> Listening</a>
                         </li>
                         <li class="list-group-item bg-aside">
                             <a href="pengunjung.php" class=" text-light text-decoration-none"><i class="fa fa-users" aria-hidden="true"></i> Pengunjung</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
+                            <a href="logout.php" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +88,7 @@ include("sys/koneksi.php");
                             Daftar Soal
                         </div>
                         <div class=" my-1 bg-light p-2 d-flex align-items-start flex-column">
-                            <a name="" id="" class="btn btn-primary my-2 align-content-start" href="#" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
+                            <a class="btn btn-primary my-2 align-content-start" href="#form-tambah" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
                             <table border="1" class="tabel">
                                 <tr>
                                     <th>ID Soal</th>
@@ -90,8 +104,8 @@ include("sys/koneksi.php");
                                         <td><?php echo $data["id_soal"] ?></td>
                                         <td class="px-2" style="max-width: 40em; text-align: left;"><?php echo $data["pertanyaan"] ?></td>
                                         <td>
-                                            <a name="" id="" class="btn btn-primary" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                                            <a name="" id="" class="btn btn-danger" href="#" role="button"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
+                                            <a  style="margin: 10px;" class="btn btn-primary" href="#form-edit" data-toggle="modal" onclick="edit(<?php echo $data['id_soal'] ?>)"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                            <a  style="margin: 10px;" class="btn btn-danger" href="#form-hapus" data-toggle="modal" onclick="hapus(<?php echo $data['id_soal'] ?>)"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
                                         </td>
                                     </tr>
                                     <?php
@@ -108,5 +122,109 @@ include("sys/koneksi.php");
             </div>
         </div>
     </div>
+
+    
+    
+    <!-- Modal Tambah -->
+    <div class="modal fade" id="form-tambah" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <form action="process/tambah_listening.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-group">
+                          <label for="pertanyaan">Pertanyaan</label>
+                          <textarea class="form-control" name="pertanyaan" id="pertanyaan" rows="3"></textarea required>
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_a">Jawaban A</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_a" id="jawaban_a" placeholder="Jawaban A">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_b">Jawaban B</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_b" id="jawaban_b" placeholder="Jawaban B">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_c">Jawaban C</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_c" id="jawaban_c" placeholder="Jawaban C">
+                        </div>
+                        <div class="form-group">
+                          <label for="jawaban_d">Jawaban D</label>
+                          <input type="text"
+                            class="form-control" name="jawaban_d" id="jawaban_d" placeholder="Jawaban D">
+                        </div>
+                        <div class="form-group">
+                          <label for="kunci">Kunci</label>
+                          <input type="text" class="form-control" name="kunci" id="kunci" aria-describedby="helpId" placeholder="Kunci">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Tambah" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Modal Edit -->
+    <div class="modal fade" id="form-edit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <form action="process/edit_listening.php" method="post" id="form-edit" enctype="multipart/form-data">
+                    <div class="modal-body" id="body-edit">
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="Edit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Modal Hapus -->
+    <div class="modal fade" id="form-hapus" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hapus Data</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <form action="process/hapus_soal.php" method="post" id="form-hapus">
+                    <div class="modal-body" id="body-edit">
+                        <div class="form-check form-check-inline mb-3 ml-2">
+                            <input type="hidden" name="id" id="id">
+                        </div>
+                        Apakah anda yakin ingin menghapus data ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+                        <input type="submit" value="Ya" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

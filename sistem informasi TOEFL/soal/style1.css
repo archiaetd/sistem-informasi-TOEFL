@@ -1,0 +1,98 @@
+/* navbar */
+.navbar-brand{
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
+  margin-bottom: -15px;
+}
+.navbar-brand p{
+  font-size: 10px;
+}
+.btn{
+  margin-right: 10px;
+  font-size: 15px;
+  font-family: 'Fredoka One', cursive;
+  border-radius: 10px;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+footer{
+  padding-top: 2rem;
+}
+
+/* home */
+
+
+.display-4 {
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+
+  color: rgb(39, 142, 226);
+  padding-top: 13rem;
+
+}
+
+.lead-1 {
+  text-align: center;
+  font-size: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(109, 103, 103);
+}
+
+.display-6 {
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 36px;
+  font-weight: bold;
+
+  color: rgb(0, 0, 0);
+  padding-top: 10rem;
+  padding-bottom: 2rem;
+}
+
+.display-11{
+  font-family: 'Fredoka One', cursive;
+}
+
+.display-7 {
+  text-align: center;
+  font-family: 'Fredoka One', cursive;
+  font-size: 36px;
+  font-weight: bold;
+
+  color: rgb(0, 0, 0);
+  padding-top: 1rem;
+  padding-bottom: 0rem;
+}
+
+.display-8 {
+  text-align: left;
+  font-family: 'Fredoka One', cursive;
+  font-weight: bolder;
+
+  color: rgb(255, 255, 255);
+  padding-top: 12rem;
+  padding-bottom: 2rem;
+}
+
+.lead-2 {
+  text-align: center;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(109, 103, 103);
+  padding-bottom: 3;
+}
+
+.transparent {
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.lingkaran {
+  width: 400px;
+  height: 400px;
+  border-radius: 400px;
+  background-color: #ffffff;
+  margin: 100px auto;
+}

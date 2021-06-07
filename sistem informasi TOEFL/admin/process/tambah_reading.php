@@ -17,10 +17,9 @@ if(file_exists($_FILES['gambar']['tmp_name']) || is_uploaded_file($_FILES['gamba
         $jawaban_b = $_POST["jawaban_b"];
         $jawaban_c = $_POST["jawaban_c"];
         $jawaban_d = $_POST["jawaban_d"];
-        $jawaban_e = $_POST["jawaban_e"];
         $kunci = $_POST["kunci"];
 
-        $jawaban = $jawaban_a.";".$jawaban_b.";".$jawaban_c.";".$jawaban_d.";".$jawaban_e;
+        $jawaban = $jawaban_a.";".$jawaban_b.";".$jawaban_c.";".$jawaban_d;
 
         $insert = mysqli_query($conn, "INSERT INTO `soal` VALUES (NULL, '$pertanyaan', 'reading', NULL, '$imgData', '$jawaban', '$kunci');");
 
@@ -49,10 +48,9 @@ if(file_exists($_FILES['gambar']['tmp_name']) || is_uploaded_file($_FILES['gamba
     $jawaban_b = $_POST["jawaban_b"];
     $jawaban_c = $_POST["jawaban_c"];
     $jawaban_d = $_POST["jawaban_d"];
-    $jawaban_e = $_POST["jawaban_e"];
     $kunci = $_POST["kunci"];
 
-    $jawaban = $jawaban_a.";".$jawaban_b.";".$jawaban_c.";".$jawaban_d.";".$jawaban_e;
+    $jawaban = $jawaban_a.";".$jawaban_b.";".$jawaban_c.";".$jawaban_d;
 
     $insert = mysqli_query($conn, "INSERT INTO `soal` VALUES (NULL, '$pertanyaan', 'reading', NULL, NULL, '$jawaban', '$kunci');");
 

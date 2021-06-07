@@ -1,7 +1,8 @@
 <?php
 
 include("sys/koneksi.php");
-
+session_start();
+include 'cek.php';
 
 
 ?>
@@ -67,7 +68,7 @@ include("sys/koneksi.php");
                             <a href="pengunjung.php" class=" text-light text-decoration-none"><i class="fa fa-users" aria-hidden="true"></i> Pengunjung</a>
                         </li>
                         <li class="list-group-item bg-aside">
-                            <a href="" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
+                            <a href="logout.php" class=" text-light text-decoration-none"><i class="fa fa-sign-out" aria-hidden="true"></i> Keluar</a>
                         </li>
                     </ul>
                 </div>
@@ -90,7 +91,7 @@ include("sys/koneksi.php");
                             <a class="btn btn-primary my-2 align-content-start" href="#form-tambah" data-toggle="modal"><i class="fa fa-plus" aria-hidden="true"></i> Tambah Data</a>
                             <table border="1" class="tabel">
                                 <tr>
-                                    <th>ID Soal</th>
+                                    <th >ID Soal</th>
                                     <th>Pertanyaan</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -101,10 +102,10 @@ include("sys/koneksi.php");
                                     ?>
                                     <tr>
                                         <td><?php echo $data["id_soal"] ?></td>
-                                        <td class="px-2" style="max-width: 40em; text-align: left;"><?php echo $data["pertanyaan"] ?></td>
+                                        <td class="px-2" style="margin:10px; max-width: 40em; text-align: left;"><?php echo $data["pertanyaan"] ?></td>
                                         <td>
-                                            <a class="btn btn-primary" href="#form-edit" data-toggle="modal" onclick="edit(<?php echo $data['id_soal'] ?>)"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                                            <a class="btn btn-danger" href="#form-hapus" data-toggle="modal" onclick="hapus(<?php echo $data['id_soal'] ?>)"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
+                                            <a  style="margin: 10px;" class="btn btn-primary" href="#form-edit" data-toggle="modal" onclick="edit(<?php echo $data['id_soal'] ?>)"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                                            <a  style="margin: 10px;" class="btn btn-danger" href="#form-hapus" data-toggle="modal" onclick="hapus(<?php echo $data['id_soal'] ?>)"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
                                         </td>
                                     </tr>
                                     <?php
